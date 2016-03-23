@@ -36,7 +36,7 @@ app.controller('AuthController', function($scope, $location, Auth, toaster){
 				$scope.user.oldPass = '';
 				$scope.user.newPass = '';
 
-				ctoaster.pop('success', "Password changed successfully");
+				toaster.pop('success', "Password changed successfully");
 			}, function(err) {
 				toaster.pop('error', "Oops, something went wrong!");
 			});
