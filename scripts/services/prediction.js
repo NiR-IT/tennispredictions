@@ -1,6 +1,6 @@
  'use strict';
 
- app.factory('Prediction', function(FURL, $firebase, Auth, toaster) {
+ app.factory('Prediction', function(FURL, $firebase, Auth) {
 
  	var ref = new Firebase(FURL);
  	var predictions = $firebase(ref.child('predictions')).$asArray();
