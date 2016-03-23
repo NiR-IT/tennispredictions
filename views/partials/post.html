@@ -1,0 +1,31 @@
+<div class="modal fade" id="postModal" ng-controller="PredController">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="panel panel-primary title">
+				<div class="panel-heading title">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h3 class="panel-title">Post a Prediction</h3>
+				</div>
+
+				<div class="panel-body">
+
+					<form ng-submit="createPrediction()">
+						<input type="text" ng-model="prediction.player1" class="form-control" placeholder="Name of first player" required><br />
+						<input type="text" ng-model="prediction.player2" class="form-control" placeholder="Name of second player" required><br />
+						<input type="text" ng-model="prediction.winner" class="form-control" placeholder="Bet" required><br />
+						<input type="text" ng-model="prediction.venue" class="form-control" placeholder="Tournament" required><br />
+						<input type="text" ng-model="prediction.date" class="form-control" placeholder="Date and time of match" required><br />
+						<input type="text" ng-model="prediction.round" class="form-control" placeholder="Round (1/4, Final)" required><br />
+						<textarea ng-model="prediction.description" class="form-control" placeholder="Prediction description" required></textarea><br />
+						<input type="number" step="any" ng-model="prediction.odd" class="form-control" placeholder="Odd" required><br />
+						<input type="text" ng-model="prediction.score" class="form-control" placeholder="Put the score after match has finished"><br />
+						<input type="submit" value="Post now" class="btn btn-primary">
+					</form>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
