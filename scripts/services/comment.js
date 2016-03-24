@@ -16,7 +16,17 @@ app.factory('Comment', function(FURL, $firebase) {
 			if(prediction_comments) {
 				return prediction_comments.$add(comment);
 			}
-		}
+		},
+
+		// editComment: function(predictionId, comment) {
+		// 	var t = this.comments(comment.$id);
+		// 	return t.$update(
+		// 		{
+		// 			content: comment.content;
+		// 		}
+		// 	);
+		// },
+
 	};
 
 	return Comment;

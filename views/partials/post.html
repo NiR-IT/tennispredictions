@@ -10,7 +10,7 @@
 
 				<div class="panel-body">
 
-					<form ng-submit="createPrediction()">
+					<form ng-submit="createPrediction()" name="postForm">
 						<input type="text" ng-model="prediction.player1" class="form-control" placeholder="Name of first player" required><br />
 						<input type="text" ng-model="prediction.player2" class="form-control" placeholder="Name of second player" required><br />
 						<input type="text" ng-model="prediction.winner" class="form-control" placeholder="Bet" required><br />
@@ -20,7 +20,7 @@
 						<textarea ng-model="prediction.description" class="form-control" placeholder="Prediction description" required></textarea><br />
 						<input type="number" step="any" ng-model="prediction.odd" class="form-control" placeholder="Odd" required><br />
 						<input type="text" ng-model="prediction.score" class="form-control" placeholder="Put the score after match has finished"><br />
-						<input type="submit" value="Post now" class="btn btn-primary">
+						<input type="submit" value="Post now" class="btn btn-primary" id="postNow">
 					</form>
 
 				</div>

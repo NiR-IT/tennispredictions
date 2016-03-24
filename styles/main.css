@@ -25,6 +25,10 @@ a, a:hover, a:focus {
 .black {
   color: black;
 }
+
+.marginio {
+  margin: 0 2px;
+}
 /* Form */
 
 .auth-forms {

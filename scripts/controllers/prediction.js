@@ -30,7 +30,7 @@ app.controller('PredController', function($scope, $location, toaster, Prediction
 
 	$scope.editPrediction = function(prediction) {
 		Prediction.editPrediction(prediction).then(function() {
-			toaster.pop('success', 'Prediction is updated.');
+			$toaster.pop('success', 'Prediction is updated.');
 		});
 	};
 });

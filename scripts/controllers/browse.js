@@ -17,12 +17,20 @@ app.controller('BrowseController', function($scope, $routeParams, toaster, Predi
  		return pageSize * pagesShown;
 	};
 
-	$scope.hasMoreItemsToShow = function(prediction) {
+	$scope.hasMoreItemsToShow = function() {
  		return pagesShown < ($scope.predictions.length / pageSize);
 	};
 
 	$scope.showMoreItems = function() {
-		pagesShown = pagesShown + 2;       
+		pageSize = pageSize + 2;       
+	}; 
+
+	$scope.hasLessItemsToShow = function() {
+ 		return pageSize > 4;
+	};
+
+	$scope.showLessItems = function() {
+		pageSize = pageSize - 2;       
 	}; 
 
 	if($routeParams.predictionId) {
