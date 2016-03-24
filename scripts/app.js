@@ -20,8 +20,8 @@ var app = angular
         templateUrl: 'views/browse.html',
         controller: 'BrowseController'         
       })
-      .when('/history', {
-        templateUrl: 'views/history.html',
+      .when('/results', {
+        templateUrl: 'views/results.html',
         controller: 'BrowseController'  
       })
       .when('/login', {
