@@ -10,10 +10,216 @@
 						</div>
 						<input type="text" ng-model="searchPrediction" class="form-control" placeholder="Search">
 					</div>
+				</div>a<div class="container-fluid">
+	<div class="row">
+
+		<div class="col-md-offset-1 col-md-5">
+			<div class="list-group">
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">
+							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+						</div>
+						<input type="text" ng-model="searchPrediction" class="form-control" placeholder="Search">
+					</div>
 				</div>
 				<!-- PREDICTION LIST -->
-				<div class="well well-sm title">Active predictions</div><br />
-				<a ng-repeat="prediction in predictions | filter: {title: searchPrediction, status: 'open'} | orderBy: 'datetime':true" ng-href="#/browse/{{prediction.$id}}">
+				<div class="well well-sm title">Predictions</div><br />
+				<a ng-repeat="prediction in predictions | filter: {player1: searchPrediction, status: '!cancelled'} | orderBy: 'datetime':true | limitTo: paginationLimit()" ng-href="#/browse/{{prediction.$id}}">
+					<div class="list-group-item">
+						<div class="row-picture hidden-xs">
+							<img class="circle" ng-src="{{prediction.gravatar}}">
+						</div>
+						<div class="row-content">
+							<h4 class="list-group-item-heading">{{prediction.player1}} vs {{prediction.player2}} <small class="hidden-xs">({{prediction.venue}})</small><small class="visible-xs">({{prediction.odd}})</small></h4>
+							<span class="list-group-item-text">
+								{{prediction.date}}
+							</span>
+						</div>
+						<div class="payment hidden-xs">
+							<div>{{prediction.odd}}</div>
+							<span class="label status {{prediction.status}}">{{prediction.status}}</span>
+						</div>
+					</div>
+					<div class="list-group-separator"></div>
+				</a>
+				<button ng-hide="hosMoreItemsToShow()" ng-click="showMoreItems()" class="btn btn-primary">Load More</button>
+			</div>
+		</div>
+
+		<div class="col-md-5">
+			<div ng-show="listMode" class="tab-panels">
+				<ul class="tabs">
+					<li rel="panel1"><button class="btn btn-primary" id="btn1">ENG</button></li>
+					<li rel="panel2"><button class="btn btn-primary" id="btn2">RUS</button></li>
+				</ul>
+				<div class="panel panel-primary panelt active" id="panel1">
+
+					<div class="panel-heading">
+						<h3 class="panel-title">Briefly about the project</h3>
+					</div>
+					<div class="panel-body">
+						Initially I have started this project with only one purpose – to improve my development skills, but after few hours of coding I decided to make from this something entertaining for me and hopefully useful for others.<br /><br />
+						Why exactly predictions on tennis? The answer is simple - I’m active tennis player and a lot of time I dedicate watching tennis matches. I’ve been a part of Latvian National tennis team and played quite a lot of European tournaments, what gave me an ability to understand tennis player opportunities during the match and tournament in general. I try to follow tennis players and their matches despite the fact I’ve planned to bet or not. Almost every day my friends are asking me to give them my predictions on tennis, what sometimes is quite annoying, so primarily exactly this has inspired me to create this project. Now I will be able to share my predictions with all my “customers” simultaneously. <br /><br />
+						May the betting Force be with us!<br /><br />
+						<a href="#/history">History of my predictions</a> (here you can find the list of all my predictions: successful, unsuccessful and in process). On the home page only active predictions are available. To get a description for chosen prediction you just need to click on it (and the panel with all this text will disapper).
+					</div>
+				</div>
+
+				<div class="panel panel-primary panelt" id="panel2">
+
+					<div class="panel-heading">
+						<h3 class="panel-title">О проекте</h3>
+					</div>
+					<div class="panel-body">
+						Изначально я занялся проектом только лишь с одной целью – улучшить свои навыки программирования, но буквально через несколько часов ко мне пришла мысль сделать из этого проекта что-то увлекательное для меня и надеюсь полезное для других.<br /><br />
+						Почему именно прогнозы на теннис? Ответ прост – я являюсь активным игроком и часть свободного времени посвящаю просмотру теннисных матче. Также я являюся часть сборной Латвии по теннису и принимал участие в европейских соревнованиях. Всё это даёт мне возможность понимать игроков, как во время определённого матча, так в течение соревнования в целом. Я стараюсь следить за игроками и их успехами несмотря на то, планирую я сам ставить или нет. Практически каждый день мои друзья, знакомые спрашивают у меня о прогнозах на теннисные матчи, что иногда надоедает. Но теперь, благодаря этому проекту, я смогу делиться со всеми моими «клиентами» одновременно. <br /><br />
+						<a href="#/history">История моих прогнозов</a> (здесь вы сможете найти список всех моих прогнозов : выиганные, проигранные и те, что всё ещё в процессе. Для того, чтобы увидеть описание прогноза, нужно лишь на него кликнуть (и весь этот текст с информацией обо мне и сайте пропадёт).
+					</div>
+					
+				</div>
+			</div>
+
+			<div ng-show="!listMode">
+
+				<!--HEADER -->
+				<div class="row">
+					<div class="col-md-8">
+						<h3>{{selectedPrediction.player1}} vs {{selectedPrediction.player2}}</h3>
+						Bet: <span class="winner">{{selectedPrediction.winner}}</span><br />
+						Tournament: <span class="venue">{{selectedPrediction.venue}}</span><br />
+						Round: <span class="round">{{selectedPrediction.round}}</span><br />
+						Startdate: {{selectedPrediction.date}}<br /><br />
+						<span>
+							<img ng-src="{{selectedPrediction.gravatar}}" class="img-circle gravatar">
+							Posted by {{selectedPrediction.name}} - <span am-time-ago="selectedPrediction.datetime"></span>
+							<span am-time-ago="{{selectedPrediction.datetime}}"></span>&nbsp;
+							<span class="label status {{selectedPrediction.status}}">{{selectedPrediction.status}}</span><br />
+						</span>
+					</div>
+
+					<div class="col-md-4 title">
+						<div class="price-tag">
+							{{selectedPrediction.odd}}
+
+							<div ng-show="isPredictionCreator(selectedPrediction)">
+								<div class="btn-group">
+									<a href="" class="btn btn-success">Admin</a>
+									<a href="" class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="" data-toggle="modal" data-target="#editModal">EDIT</a></li>
+										<li class="divider"></li>
+										<li><a href="" ng-click="cancelPrediction(selectedPrediction.$id)">DELETE</a></li>
+										<li class="divider"></li>
+										<li><a href="" ng-click="wonPrediction(selectedPrediction.$id)">WON</a></li>
+										<li class="divider"></li>
+										<li><a href="" ng-click="lostPrediction(selectedPrediction.$id)">LOST</a></li>
+										<li class="divider"></li>
+										<li><a href="" ng-click="backPrediction(selectedPrediction.$id)">MONEYBACK</a></li>
+										<li class="divider"></li>
+										<li><a href="" ng-click="processPrediction(selectedPrediction.$id)">IN PROCESS</a></li>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<br />
+				<!-- DESCRIPTION -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Description</h3>
+							</div>
+							<div class="panel-body">
+								{{selectedPrediction.description}}
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- COMMENTS -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-dafault">
+
+							<div class="panel-heading">
+								<h3 class="panel-title black">Comments</h3>
+							</div>
+
+							<div class="panel-body">
+								<div class="title" ng-hide="comments && comments.length > 0">
+									<span>NO COMMENTS ABOUT THIS PREDICTION</span>
+								</div><br />
+
+								<div class="row" ng-repeat="com in comments">
+									<div class="col-md-1">
+										<img src="{{com.gravatar}}" class="img-circle comment gravatar">
+									</div>
+									<div class="col-md-11">
+										<div class="well well-sm cmt">
+											<span class="cmt-title">{{com.name}}:</span>
+											<span class="cmt-time pull-right"><span am-time-ago="{{com.datetime}}"></span></span><br />
+
+											<span>{{com.content}}</span>
+										</div>
+									</div>
+								</div><br />
+
+								<div class="row" ng-show="isOpen(selectedPrediction)">
+									<div class="col-md-12">
+										<form ng-submit="addComment()">
+
+											<div class="input-group">
+												<div class="input-group-addon">
+													<img no-src="{{user.profile.gravatar}}" class="img-circle comment gravatar">
+												</div>
+												<input type="text" ng-model="content" cols="10" row="3" class="form-control" placeholder="Type a comment here" required><br />
+											</div>
+
+											<span class="pull-right">
+												<input type="submit" class="btn btn-primary" value="Comment">
+											</span>
+										</form>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+	$(function() {
+
+		$('.tab-panels .tabs li').on('click', function() {
+
+			var panelToShow = $(this).attr('rel');
+
+			$('.tab-panels .panel.active').slideUp(300, showNextPanel);
+
+			function showNextPanel() {
+				$(this).removeClass('active');
+				$('#'+panelToShow).slideDown(300, function() {
+					$(this).addClass('active');
+				});
+			};
+
+		});
+
+	});
+
+</script>
+
+<div ng-include="'views/partials/edit.html'"></div>"prediction in predictions | filter: {title: searchPrediction, status: 'open'} | orderBy: 'datetime':true" ng-href="#/browse/{{prediction.$id}}">
 					<div class="list-group-item">
 						<div class="row-picture hidden-xs">
 							<img class="circle" ng-src="{{prediction.gravatar}}">
