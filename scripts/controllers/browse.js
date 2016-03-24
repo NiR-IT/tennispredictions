@@ -9,6 +9,21 @@ app.controller('BrowseController', function($scope, $routeParams, toaster, Predi
 
 	$scope.user = Auth.user;
 
+	var pagesShown = 1;
+
+	var pageSize = 3;
+
+	$scope.paginationLimit = function() {
+ 		return pageSize * pagesShown;
+	};
+
+	$scope.hasMoreItemsToShow = function(prediction) {
+ 		return pagesShown < ($scope.predictions.length / pageSize);
+	};
+
+	$scope.showMoreItems = function() {
+		pagesShown = pagesShown + 2;       
+	}; 
 
 	if($routeParams.predictionId) {
 		var prediction = Prediction.getPrediction($routeParams.predictionId).$asObject();
@@ -68,4 +83,6 @@ app.controller('BrowseController', function($scope, $routeParams, toaster, Predi
 			$scope.content = '';
 		});
 	};
+
+
 });
