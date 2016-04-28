@@ -5,25 +5,10 @@
 
 			<div class="row">
 
-				<div class="col-md-4">
-					<div class="panel panel-info">
-						<div class="panel-heading">
-							<h3 class="panel-title">Predictions in process</h3>
-						</div>
-						<div class="panel-body">
-							<ol>
-								<li ng-repeat="prediction in predictions | filter: {title: searchPrediction, status: 'open'}">Match: <span class="venue">{{prediction.player1}} vs {{prediction.player2}}</span> <br/> Bet: <span class="winner">{{prediction.winner}}</span>
-								({{prediction.odd}})
-								</li>
-							</ol>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<div class="panel panel-warning">
 						<div class="panel-heading">
-							<h3 class="panel-title">Successful predictions</h3>
+							<h3 class="panel-title">Successful predictions (41)</h3>
 						</div>
 						<div class="panel-body">
 							<ol>
@@ -36,10 +21,10 @@
 					</div>
 				</div>
 
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Unsuccessful predictions</h3>
+							<h3 class="panel-title">Unsuccessful predictions (14)</h3>
 						</div>
 						<div class="panel-body">
 							<ol>

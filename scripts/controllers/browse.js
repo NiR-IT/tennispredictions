@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('BrowseController', function($scope, $routeParams, toaster, Prediction, Auth, Comment) {
+app.controller('BrowseController', function($scope, $routeParams, toaster, Prediction, Auth, Comment, Like) {
 
 	$scope.searchPrediction = '';
 	$scope.predictions = Prediction.all;
@@ -43,11 +43,22 @@ app.controller('BrowseController', function($scope, $routeParams, toaster, Predi
 		$scope.selectedPrediction = prediction;
 
 		if($scope.signedIn()) {
+
+			Like.isLiked(prediction.$id).then(function(data) {
+				$scope.alreadyLiked = data;
+			});
+
 			$scope.isPredictionCreator = Prediction.isCreator;
 			$scope.isOpen = Prediction.isOpen;
 		}
 
 		$scope.comments = Comment.comments(prediction.$id);
+
+		$scope.likes = Like.likes(prediction.$id);
+
+		$scope.block = false;
+
+		$scope.isLikeMaker = Like.isMaker;
 	};
 
 	$scope.cancelPrediction = function(predictionId) {
@@ -88,9 +99,34 @@ app.controller('BrowseController', function($scope, $routeParams, toaster, Predi
 		};
 
 		Comment.addComment($scope.selectedPrediction.$id, comment).then(function() {
+			toaster.pop('success', 'Your comment has been added successfully');
 			$scope.content = '';
 		});
 	};
 
+	$scope.likePrediction = function() {
+		var like = {
+			rate: $scope.rate,
+			uid: $scope.user.uid,
+			name: $scope.user.profile.name,
+			gravatar: $scope.user.profile.gravatar
+		};
+
+		Like.likePrediction($scope.selectedPrediction.$id, like).then(function() {
+			toaster.pop('success', 'Your like has been added');
+			$scope.rate = '';
+			$scope.block = true;
+			$scope.alreadyLiked = true;
+		});
+	};
+
+	$scope.cancelLike = function(likeId) {
+		Like.cancelLike($scope.selectedPrediction.$id, likeId).then(function() {
+			toaster.pop('success', 'Your like has been removed');
+		
+			$scope.alreadyLiked = false;
+			$scope.block = false;
+		});
+	};
 
 });

@@ -15,9 +15,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
       
       <ul class="nav navbar-nav navbar-left">
-        <li ng-show="signedIn()"><a href="" data-toggle="modal" data-target="#postModal">Add prediction</a></li>
+        <li ng-show="currentUser.profile.email == 'nikitaribakovs96@gmail.com'"><a href="" data-toggle="modal" data-target="#postModal">Add prediction</a></li>
         <li><a href="#/browse">Predictions</a></li>
         <li><a href="#/results">Results</a></li>
+        <li><a href="#/gravatar">Gravatar</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li ng-hide="signedIn()"><a href="#/login">Login</a></li>        

@@ -27,8 +27,14 @@ a, a:hover, a:focus {
 }
 
 .marginio {
-  margin: 0 2px;
+  margin-left: 3px;
 }
+
+.ribakovs {
+  text-align: right;
+  font-style: italic;
+}
+
 /* Form */
 
 .auth-forms {

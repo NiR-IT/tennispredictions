@@ -7,7 +7,7 @@ app.factory('Auth', function(FURL, $firebaseAuth, $firebase) {
 
 	var Auth = {
 
-		user: {},
+		user: {}, 
 
 		createProfile: function(uid, user) {
 			var profile = {
@@ -59,7 +59,8 @@ app.factory('Auth', function(FURL, $firebaseAuth, $firebase) {
 
 		signedIn: function() {
 			return !!Auth.user.provider;
-		}
+		},
+
 	};
 
 	auth.$onAuth(function(authData) {

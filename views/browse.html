@@ -32,7 +32,23 @@
 				</a>
 				<button ng-show="hasMoreItemsToShow()" ng-click="showMoreItems()" class="btn btn-primary">Load More</button>
 				<button ng-show="hasLessItemsToShow()" ng-click="showLessItems()" class="btn btn-primary">Show Less</button>
+
 			</div>
+
+			<!---<div class="panel panel-primary">
+
+					<div class="panel-heading">
+						<h3 class="panel-title">If you find project useful...</h3>
+					</div>
+					<div class="panel-body title">
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="VLSL3LQVPTHVL">
+							<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+						</form>
+					</div>
+			</div>-->
 		</div>
 
 		<div class="col-md-5">
@@ -40,6 +56,7 @@
 				<ul class="tabs">
 					<li rel="panel1"><button class="btn btn-primary" id="btn1">ENG</button></li>
 					<li rel="panel2"><button class="btn btn-primary" id="btn2">RUS</button></li>
+
 				</ul>
 				<div class="panel panel-primary panelt active" id="panel1">
 
@@ -47,10 +64,14 @@
 						<h3 class="panel-title">Briefly about the project</h3>
 					</div>
 					<div class="panel-body">
-						Initially I have started this project with only one purpose – to improve my development skills, but after few hours of coding I decided to make from this something entertaining for me and hopefully useful for others.<br /><br />
+						<strong>About me: </strong><br /><br />
 						Why exactly predictions on tennis? The answer is simple - I’m active tennis player and a lot of time I dedicate watching tennis matches. I’ve been a part of Latvian National tennis team and played quite a lot of European tournaments, what gave me an ability to understand tennis player opportunities during the match and tournament in general. I try to follow tennis players and their matches despite the fact I’ve planned to bet or not. Almost every day my friends are asking me to give them my predictions on tennis, what sometimes is quite annoying, so primarily exactly this has inspired me to create this project. Now I will be able to share my predictions with all my “customers” simultaneously. <br /><br />
+						<strong>How it works: </strong><br /><br />
+						On the home page only active predictions are available. To get a description for chosen prediction you just need to click on it (and the panel with all this text will disapper). Under the description of active prediction there are available two functions for every authorized user : adding likes and comments.<br /><br />
+						Our website uses gravatar instead of simple avatar. <a href="https://www.tennispredictions.eu/#/gravatar">How to create your own gravatar</a>.<br /><br />
+						<a href="#/history">History of my predictions</a> (here you can find the list of all my predictions: successful, unsuccessful and in process).<br /><br />
 						May the betting Force be with us!<br /><br />
-						<a href="#/history">History of my predictions</a> (here you can find the list of all my predictions: successful, unsuccessful and in process). On the home page only active predictions are available. To get a description for chosen prediction you just need to click on it (and the panel with all this text will disapper).
+						<span class="ribakovs">Nikita Ribakovs</span>
 					</div>
 				</div>
 
@@ -60,9 +81,13 @@
 						<h3 class="panel-title">О проекте</h3>
 					</div>
 					<div class="panel-body">
-						Изначально я занялся проектом только лишь с одной целью – улучшить свои навыки программирования, но буквально через несколько часов ко мне пришла мысль сделать из этого проекта что-то увлекательное для меня и надеюсь полезное для других.<br /><br />
-						Почему именно прогнозы на теннис? Ответ прост – я являюсь активным игроком и часть свободного времени посвящаю просмотру теннисных матче. Также я являюся часть сборной Латвии по теннису и принимал участие в европейских соревнованиях. Всё это даёт мне возможность понимать игроков, как во время определённого матча, так в течение соревнования в целом. Я стараюсь следить за игроками и их успехами несмотря на то, планирую я сам ставить или нет. Практически каждый день мои друзья, знакомые спрашивают у меня о прогнозах на теннисные матчи, что иногда надоедает. Но теперь, благодаря этому проекту, я смогу делиться со всеми моими «клиентами» одновременно. <br /><br />
-						<a href="#/history">История моих прогнозов</a> (здесь вы сможете найти список всех моих прогнозов : выиганные, проигранные и те, что всё ещё в процессе. Для того, чтобы увидеть описание прогноза, нужно лишь на него кликнуть (и весь этот текст с информацией обо мне и сайте пропадёт).
+						<strong>Обо мне: </strong><br /><br />
+						Почему именно прогнозы на теннис? Ответ прост – я являюсь активным игроком и часть свободного времени посвящаю просмотру теннисных матчей. Также я являлся частью сборной Латвии по теннису и принимал участие в европейских соревнованиях. Всё это даёт мне возможность понимать игроков, как во время определённого матча, так в течение соревнования в целом. Я стараюсь следить за игроками и их успехами несмотря на то, планирую я сам ставить или нет. Практически каждый день мои друзья, знакомые спрашивают у меня о прогнозах на теннисные матчи, что иногда надоедает. Но теперь, благодаря этому проекту, я смогу делиться со всеми моими «клиентами» одновременно. <br /><br />
+						<strong>How it works: </strong><br /><br />
+						Для того, чтобы увидеть описание прогноза, нужно лишь на него кликнуть (и весь этот текст с информацией обо мне и сайте пропадёт). Под описанием каждого прогноза авторизированным пользователям проекта возможны 2 функции : ставить лайк и оставлять комментарий.<br /><br />
+						Наш сайт вместо обычной аватарки использует граватар. <a href="https://www.tennispredictions.eu/#/gravatar">Как создать свой граватар</a>.<br /><br />
+						<a href="#/history">История моих прогнозов</a> (здесь вы сможете найти список всех моих прогнозов : выиганные, проигранные и те, что всё ещё в процессе.<br /><br />
+						<span class="ribakovs">Никита Рыбаков</span>
 					</div>
 					
 				</div>
@@ -110,6 +135,10 @@
 								</div>
 							</div>
 
+							<div>
+								<button ng-show="isOpen(selectedPrediction) && !isPredictionCreator(selectedPrediction) && !alreadyLiked" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#likeModal">LIKE PREDICTION</button>
+							</div>
+
 						</div>
 					</div>
 				</div>
@@ -150,7 +179,7 @@
 									<div class="col-md-11">
 										<div class="well well-sm cmt">
 											<span class="cmt-title">{{com.name}}:</span>
-											<span class="cmt-time pull-right"><span am-time-ago="{{com.datetime}}"></span><button class="glyphicon glyphicon-remove marginio"></button></span><br />
+											<span class="cmt-time pull-right"><span am-time-ago="{{com.datetime}}"></span></span><br />
 
 											<span>{{com.content}}</span>
 										</div>
@@ -174,6 +203,33 @@
 										</form>
 									</div>
 								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<!--LIKES -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-default">
+
+							<div class="panel-heading">
+								<h3 class="panel-title">Likes</h3>
+							</div>
+
+							<div class="panel-body">
+								<div class="title" ng-hide="likes && likes.length > 0">
+									<span>NO LIKES FOR THIS PREDICTION YET</span>
+								</div>
+
+								<div class="row" ng-repeat="like in likes">
+									<div class="col-md-10">
+										<button ng-show="isLikeMaker(like) && isOpen(selectedPrediction)" class="btn btn-danger btn-xs" ng-click="cancelLike(like.$id)">Remove Like</button>
+										<img ng-src="{{like.gravatar}}" class="img-circle offer gravatar">
+										<span>{{like.name}}</span>
+									</div>
+								</div><br />
 							</div>
 
 						</div>
@@ -208,3 +264,4 @@
 </script>
 
 <div ng-include="'views/partials/edit.html'"></div>
+<div ng-include="'views/partials/like.html'"></div>

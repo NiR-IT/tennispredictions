@@ -8,7 +8,7 @@ app.controller('PredController', function($scope, $location, toaster, Prediction
 		$scope.prediction.poster = Auth.user.uid;
 
 		Prediction.createPrediction($scope.prediction).then(function(ref) {
-			$toaster.pop('success', 'Prediction posted successfully.');
+			toaster.pop('success', 'Prediction posted successfully.');
 			$scope.prediction = {
 				player1: '',
 				player2: '',
@@ -30,7 +30,7 @@ app.controller('PredController', function($scope, $location, toaster, Prediction
 
 	$scope.editPrediction = function(prediction) {
 		Prediction.editPrediction(prediction).then(function() {
-			$toaster.pop('success', 'Prediction is updated.');
+			toaster.pop('success', 'Prediction is updated.');
 		});
 	};
 });

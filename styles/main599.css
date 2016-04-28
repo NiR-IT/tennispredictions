@@ -30,6 +30,11 @@ a, a:hover, a:focus {
   margin: 0 2px;
 }
 
+.ribakovs {
+  text-align: right;
+  font-style: italic;
+}
+
 /* Form */
 
 .auth-forms {

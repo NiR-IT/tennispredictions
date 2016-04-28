@@ -32,6 +32,9 @@ var app = angular
         templateUrl: 'views/register.html',
         controller: 'AuthController'      
       })
+      .when('/gravatar', {
+        templateUrl: 'views/gravatar.html',   
+      })
       .otherwise({
         redirectTo: '/'
       });
